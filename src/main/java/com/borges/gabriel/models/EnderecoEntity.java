@@ -16,7 +16,7 @@ public class EnderecoEntity {
     private String cep;
     private int numero;
 
-    @OneToMany(mappedBy = "enderecoId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL)
     private List<UsuarioEntity> usuarios;
 
     public Long getId() {
