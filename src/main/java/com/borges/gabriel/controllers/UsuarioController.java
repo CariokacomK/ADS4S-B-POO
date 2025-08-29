@@ -5,13 +5,14 @@ import com.borges.gabriel.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/usuario")
+@RestController
+@RequestMapping("/usuario")
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping("/${id}")
+    @GetMapping("/{id}")
     public UsuarioEntity buscarUsuario(@PathVariable Long id){
         return usuarioService.buscarUsuario(id);
     };
@@ -21,12 +22,12 @@ public class UsuarioController {
         usuarioService.criarUsuario(usuario);
     }
 
-    @DeleteMapping("/${id}")
+    @DeleteMapping("/{id}")
     public void deletarUsuario(@PathVariable Long id){
         usuarioService.deletarUsuario(id);
     }
 
-    @PutMapping("/${id}")
+    @PutMapping("/{id}")
     public String atualizarUsuario(@PathVariable Long id, @RequestBody UsuarioEntity usuario){
         return usuarioService.atualizarUsuario(id, usuario);
     }

@@ -28,7 +28,7 @@ public class EnderecoService {
     public String atualizarEndereco(Long id, EnderecoEntity endereco){
         var enderecoOpt = enderecoRepository.findById(id).orElse(null);
 
-        if(endereco != null){
+        if(enderecoOpt != null){
             enderecoOpt.setBairro(endereco.getBairro());
             enderecoOpt.setCep(endereco.getCep());
             enderecoOpt.setNumero(endereco.getNumero());

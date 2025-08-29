@@ -6,12 +6,14 @@ import com.borges.gabriel.services.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/endereco")
+@RestController
+@RequestMapping("/endereco")
 public class EnderecoController {
 
     @Autowired
     private EnderecoService enderecoService;
-    @GetMapping("/${id}")
+
+    @GetMapping("/{id}")
     public EnderecoEntity buscarEndereco(@PathVariable Long id){
         return enderecoService.buscarEnderco(id);
     }
@@ -21,13 +23,13 @@ public class EnderecoController {
         enderecoService.criarEndereco(endereco);
     }
 
-    @DeleteMapping("/${id}")
+    @DeleteMapping("/{id}")
     public void deletarEndereco(@PathVariable Long id){
         enderecoService.deletarEndereco(id);
     }
 
-    @PutMapping("/${id}")
+    @PutMapping("/{id}")
     public String atualizarEndereco(@PathVariable Long id, @RequestBody EnderecoEntity endereco){
-        return enderecoService.atualizarEndereco(id, endereco);
+        return enderecoService.atualizarEndereco(id,endereco);
     }
 }
